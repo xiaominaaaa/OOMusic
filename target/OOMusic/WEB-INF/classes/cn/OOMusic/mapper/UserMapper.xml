@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.OOMusic.mapper.UserMapper">
+    <!--对应数据库字段-->
+    <resultMap id="user" type="cn.OOMusic.pojo.User">
+        <id property="userId" column="user_id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="userPassword" column="user_password"></result>
+        <result property="userEmail" column="user_email"></result>
+        <result property="userPhone" column="user_phone"></result>
+        <result property="userSex" column="user_sex"></result>
+        <result property="userAddress" column="user_address"></result>
+    </resultMap>
+
+
+    <insert id="addUser"  parameterType="cn.OOMusic.pojo.User">
+        INSERT INTO oouser(user_name,user_password,user_email,user_phone,user_sex,user_address)
+        VALUES (#{userName},#{userPassword},#{userEmail},#{userPhone},#{userSex},#{userAddress})
+    </insert>
+    
+    <select id="findUser" parameterType="int" resultMap="user">
+        SELECT * FROM oouser WHERE user_id = #{id}
+    </select>
+    
+    <update id="update" parameterType="cn.OOMusic.pojo.User">
+        UPDATE oouser SET user_id=#{userId}
+         <if test="userName != null">
+             ,user_name=#{userName}
+         </if>
+        <if test="userPassword != null">
+            ,user_password=#{userPassword}
+        </if>
+        <if test="userEmail != null">
+            ,user_email=#{userEmail}
+        </if>
+        <if test="userPhone != null">
+            ,user_phone=#{userPhone}
+        </if>
+        <if test="userSex != null">
+            ,user_sex=#{userSex}
+        </if>
+        <if test="userAddress != null">
+            ,user_sex=#{userAddress}
+        </if>
+         WHERE user_id=#{userId}
+    </update>
+</mapper>

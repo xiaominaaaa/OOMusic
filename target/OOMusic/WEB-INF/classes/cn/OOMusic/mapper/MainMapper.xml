@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.OOMusic.mapper.MainMapper">
+    <!--对应数据库字段-->
+    <resultMap id="mainData" type="cn.OOMusic.pojo.MainData">
+        <id property="id" column="id"></id>
+        <result property="songName" column="song_name"></result>
+        <result property="image" column="image"></result>
+        <result property="singer" column="singer"></result>
+        <result property="playTime" column="play_time"></result>
+        <result property="nextUrl" column="next_url"></result>
+        <result property="type" column="type"></result>
+        <result property="play" column="play"></result>
+    </resultMap>
+
+
+    <select id="mainData" resultMap="mainData">
+        SELECT * FROM maindata
+    </select>
+</mapper>
