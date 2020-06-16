@@ -2,6 +2,8 @@
   <!-- 头部组件 -->
   <div>
     <vHeader></vHeader>
+
+    <button @click=" $router.push({path:'/data'}) ">跳到data去</button>
     </div>
 </template>
 

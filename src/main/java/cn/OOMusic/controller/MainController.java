@@ -21,6 +21,10 @@ public class MainController {
     @Autowired
     private MainService mainService;
 
+    /***
+     * 获取主页数据
+     * @return
+     */
     @RequestMapping(value = "/main" )
     @ResponseBody
     public Example<MainData> getMainData(){

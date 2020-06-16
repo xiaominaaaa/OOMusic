@@ -17,4 +17,7 @@ export default{
   API_USER_PASSNAME:server+'user/passname',
   //修改电话和邮箱
   API_USER_EMAILPHONE:server+'user/emailphone',
+  
+  //删除用户
+  API_USER_DELETE: server+'/user/delete',
 }

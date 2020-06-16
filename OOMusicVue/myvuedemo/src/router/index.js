@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Main from '@/components/Main.vue'
-
+import Data from '@/components/Data.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +17,11 @@ export default new Router({
       path:'/main',
       name:'Main',
       component:Main
-    }
+    },
+    {
+      path:'/data',
+      name:"Data",
+      component:Data
+    },
   ]
 })
