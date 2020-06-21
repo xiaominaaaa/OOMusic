@@ -18,12 +18,14 @@
     },
     methods:{
       test:function(){
-       this.post(this.api.API_USER_PASSNAME,{
+       this.post(this.api.SERVER_ROOT+'/like/delete',{
          userId:2,
-         userName:'老八'
+         songId:2
        }).then(response =>{
+         console.log("ok")
          console.log(response)
        }).catch(error=>{
+         console.log("error")
          console.log(error)
        })
       }

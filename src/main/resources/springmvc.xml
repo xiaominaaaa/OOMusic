@@ -10,12 +10,19 @@
         http://www.springframework.org/schema/mvc
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-
-
     <!--注解扫描控制器-->
     <context:component-scan base-package="cn.OOMusic.controller"/>
     <!--开启springmvc注解支持-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven>
+<!--        <mvc:message-converters>-->
+<!--            &lt;!&ndash;配置jackson支持懒加载&ndash;&gt;-->
+<!--            <bean class="org.springframework.http.converter.cbor.MappingJackson2CborHttpMessageConverter">-->
+<!--                <property name="objectMapper" ref="jacksongMapper"></property>-->
+<!--            </bean>-->
+<!--        </mvc:message-converters>-->
+    </mvc:annotation-driven>
+<!--    <bean id="jacksongMapper" class="cn.OOMusic.util.ObjMapper"></bean>-->
+
 
     <!--
     快速解决整个项目的跨域请求

@@ -12,12 +12,15 @@ export default{
   //添加用户
   API_USER_ADD: server+'user/add',
   //查询用户
-  API_USER_FIND: server+'user/finduser',
+  API_USER_FIND: server+'user/find',
   //修改账号和密码
   API_USER_PASSNAME:server+'user/passname',
   //修改电话和邮箱
   API_USER_EMAILPHONE:server+'user/emailphone',
-  
+
   //删除用户
-  API_USER_DELETE: server+'/user/delete',
+  API_USER_DELETE: server+'user/delete',
+
+  //获取所有收藏
+  API_LIKE_GET: server+"like/get",
 }

@@ -1,28 +1,36 @@
-import cn.OOMusic.mapper.UserMapper;
-import cn.OOMusic.pojo.User;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        Users user1 = new Users();
+        user1.setId(1);
+        user1.setUsername("susu");
+        user1.setPassword("123");
 
-        SqlSessionFactory factory =  new SqlSessionFactoryBuilder().build(inputStream);
+        Users user2 = new Users();
+        user2.setId(2);
+        user2.setUsername("tutu");
+        user2.setPassword("456");
 
-        SqlSession session = factory.openSession();
+        List<Users> list = new ArrayList<Users>();
+        list.add(user1);
+        list.add(user2);
 
-        UserMapper mapper = session.getMapper(UserMapper.class);
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writeValueAsString(list);
 
-        List<User> users = mapper.select();
-        for (User user : users){
-            System.out.println(user);
+        System.out.println(result);
+
+        List<Users> us = mapper.readValue(result,List.class);
+        System.out.println(us);
+        for (Users users:list){
+            System.out.println(users);
         }
+
     }
 }

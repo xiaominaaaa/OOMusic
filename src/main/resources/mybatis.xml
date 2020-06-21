@@ -9,6 +9,9 @@
     <!--配置日志文件-->
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!--mybatis 延时加载-->
+<!--        <setting name="lazyLoadingEnabled"  value="true"/>&lt;!&ndash;mybatis 支持延时加载&ndash;&gt;-->
+<!--        <setting name="aggressiveLazyLoading"  value="true"/>&lt;!&ndash;mybatis 开启延时加载&ndash;&gt;-->
     </settings>
 
     <!--允许使用类名作为别名-->

@@ -7,7 +7,7 @@
     <div class="">
       <ul>
         <li>音乐馆</li>
-        <li>我的音乐</li>
+        <li @click="" >我的音乐</li>
         <li>客户端</li>
         <li>开发平台</li>
         <li>VIP</li>
@@ -41,6 +41,10 @@
       }
     },
     methods:{
+      tiao:function(){
+        
+        this.$router.push({name:'Play',params: {userId:'2'}});
+      }
     },
     mounted() {
     }

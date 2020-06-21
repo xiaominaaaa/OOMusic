@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.OOMusic.mapper.PlayMapper">
+    <!--对应数据库字段-->
+    <resultMap id="mainData" type="cn.OOMusic.pojo.Like">
+        <id property="userId" column="user_id"></id>
+        <result property="songId" column="song_id"></result>
+    </resultMap>
+    <resultMap id="song" type="cn.OOMusic.pojo.Song">
+        <id property="id" column="id"></id>
+        <result property="songId" column="song_id"></result>
+        <result property="songName" column="song_name"></result>
+        <result property="playTime" column="play_time"></result>
+        <result property="albumName" column="album_name"></result>
+        <result property="playNum" column="play_num"></result>
+        <result property="likeNum" column="like_num"></result>
+        <result property="singer" column="singer"></result>
+        <result property="songUrl" column="song_url"></result>
+        <result property="lyricsUrl" column="lyrics_url"></result>
+        <result property="songImage" column="song_image"></result>
+    </resultMap>
+    <resultMap id="play" type="cn.OOMusic.pojo.PlayList">
+        <id property="id" column="id"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="songId" column="song_id"></result>
+        <result property="playlistName" column="playlist_name"></result>
+        <result property="playlistNum" column="playlist_num"></result>
+        <!--延时加载-->
+        <collection property="songList" ofType="cn.OOMusic.pojo.Song" select="cn.OOMusic.mapper.PlayMapper.getSongByPlayList" column="id">
+        </collection>
+    </resultMap>
+
+    <insert id="addPaly" parameterType="cn.OOMusic.pojo.PlayList">
+        INSERT INTO playlist (user_id,song_id,playlist_name,playlist_num) VALUES
+    (#{userId},#{songId},#{playlistName},0)
+    </insert>
+
+    <insert id="addSong" parameterType="cn.OOMusic.pojo.PlayList">
+       INSERT INTO playsonglist (id,song_id,user_id) VALUES(#{id},#{songId},#{userId});
+    </insert>
+    <update id="updataSongnum" parameterType="cn.OOMusic.pojo.PlayList">
+       UPDATE playlist SET playlist_num = (SELECT COUNT(*) FROM playsonglist WHERE id = #{id} and user_id = #{userId}) WHERE id = #{id};
+    </update>
+
+    <delete id="deleteplayList" parameterType="cn.OOMusic.pojo.PlayList">
+        DELETE FROM playlist WHERE id = #{id};
+    </delete>
+
+    <delete id="deletelistofsong" parameterType="cn.OOMusic.pojo.PlayList">
+        DELETE FROM playsonglist WHERE id = #{id};
+    </delete>
+
+    <delete id="removesong" parameterType="cn.OOMusic.pojo.PlayList">
+        DELETE FROM playsonglist WHERE id = #{id} AND  user_id = #{userId} AND song_id = #{songId};
+    </delete>
+
+    <update id="updataePlayname" parameterType="cn.OOMusic.pojo.PlayList">
+        UPDATE playlist SET playlist_name = #{playlistName};````````````
+    </update>
+
+<!--                 SELECT s.*,a.id as playid,a.user_id FROM-->
+<!--                 (SELECT lay.*,p.playlist_name,p.playlist_num FROM playlist p RIGHT JOIN playsonglist lay on p.id = lay.id WHERE lay.user_id = 1) a-->
+<!--                 LEFT JOIN songlist s on a.song_id = s.id-->
+    <select id="getall" parameterType="cn.OOMusic.pojo.PlayList" resultMap="play">
+        SELECT * FROM playlist WHERE user_id = 1
+    </select>
+
+    <select id="getSongByPlayList" resultMap="song">
+        SELECT * FROM songlist WHERE id in (SELECT song_id FROM playsonglist WHERE id = #{id})
+    </select>
+
+</mapper>

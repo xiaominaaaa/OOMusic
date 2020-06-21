@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.OOMusic.mapper.LikeMapper">
+    <!--对应数据库字段-->
+    <resultMap id="like" type="cn.OOMusic.pojo.Like">
+        <id property="userId" column="user_id"></id>
+        <result property="songId" column="song_id"></result>
+    </resultMap>
+    <resultMap id="song" type="cn.OOMusic.pojo.Song">
+        <id property="id" column="id"></id>
+        <result property="songId" column="song_id"></result>
+        <result property="songName" column="song_name"></result>
+        <result property="playTime" column="play_time"></result>
+        <result property="albumName" column="album_name"></result>
+        <result property="playNum" column="play_num"></result>
+        <result property="likeNum" column="like_num"></result>
+        <result property="singer" column="singer"></result>
+        <result property="songUrl" column="song_url"></result>
+        <result property="lyricsUrl" column="lyrics_url"></result>
+        <result property="songImage" column="song_image"></result>
+    </resultMap>
+
+    <select id="getLikes" resultMap="song">
+        SELECT * FROM songlist WHERE id IN (SELECT song_id FROM ilike WHERE user_id = #{id})
+    </select>
+
+    <insert id="addLike" parameterType="cn.OOMusic.pojo.Like">
+        INSERT INTO ilike (user_id,song_id) VALUES(#{userId},#{songId})
+    </insert>
+
+    <delete id="deleteLike" parameterType="cn.OOMusic.pojo.Like">
+        DELETE FROM ilike WHERE user_id = #{userId} and song_id = #{songId}
+    </delete>
+
+    <select id="isLike" parameterType="cn.OOMusic.pojo.Like" resultMap="like">
+        SELECT COUNT(*) FROM ilike WHERE user_id = #{userId} AND song_id = #{songId}
+    </select>
+</mapper>
