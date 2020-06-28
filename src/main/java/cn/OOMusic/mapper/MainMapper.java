@@ -12,4 +12,12 @@ public interface MainMapper {
      * @return
      */
     List<MainData> mainData();
+
+    /**
+     * 添加主页数据
+     * @param mainData
+     * @return
+     */
+    int addMaindata(MainData mainData);
+
 }

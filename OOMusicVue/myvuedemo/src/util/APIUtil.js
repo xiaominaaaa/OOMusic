@@ -23,4 +23,12 @@ export default{
 
   //获取所有收藏
   API_LIKE_GET: server+"like/get",
+  //拿到歌单推荐数据
+  API_MIAN_GEDAN:server+"main/ge",
+  //拿到搜索页数据
+  API_MAIN_SEARCH: server+"main/search",
+  //拿到完整的歌曲
+  API_GET_SONG:server+"main/getsong",
+  //登录 
+  API_USER_LOGIN:server+"user/login",
 }

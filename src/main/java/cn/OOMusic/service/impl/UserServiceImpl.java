@@ -41,4 +41,9 @@ public class UserServiceImpl implements UserService {
     public Massage updataEmailPhone(User user) {
         return userMapper.update(user)>0?new Massage(200,"修改成功"):new Massage(500,"修改失败");
     }
+
+    @Override
+    public User login(User user) {
+        return userMapper.login(user);
+    }
 }

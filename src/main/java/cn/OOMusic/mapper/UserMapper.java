@@ -31,4 +31,11 @@ public interface UserMapper {
      */
     int update(User user);
 
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    User login(User user);
+
 }

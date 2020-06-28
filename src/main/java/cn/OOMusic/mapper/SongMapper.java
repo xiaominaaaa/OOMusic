@@ -36,8 +36,14 @@ public interface SongMapper {
     /**
      * 查询一条条歌曲
      */
-
     List<Song> selectsong(int songId);
+
+    /**
+     * 判断歌曲是否存在
+     * @param songId
+     * @return
+     */
+    int isSide(String songId);
 
 
 }

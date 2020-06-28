@@ -15,7 +15,7 @@ export default {
         url,
         // data: qs.stringify(data),
         data,
-        timeout: 15000,
+        timeout: 45000,
         headers: {
           // 'X-Requested-With': 'XMLHttpRequest',
           // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -49,7 +49,7 @@ export default {
           }
           return ret
         }],
-        timeout: 15000,
+        timeout: 45000,
         headers: {
           // 'X-Requested-With': 'XMLHttpRequest',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -71,7 +71,7 @@ export default {
         // baseURL: process.env.BASE_API,
         url,
         params, // get 请求时带的参数
-        timeout: 15000
+        timeout: 45000
       }).then(
         (response) => {
           return response

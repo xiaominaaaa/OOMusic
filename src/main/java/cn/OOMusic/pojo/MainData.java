@@ -6,6 +6,21 @@ public class MainData {
     private String image;
     private String singer;
     private String playTime;
+
+    @Override
+    public String toString() {
+        return "MainData{" +
+                "id=" + id +
+                ", songName='" + songName + '\'' +
+                ", image='" + image + '\'' +
+                ", singer='" + singer + '\'' +
+                ", playTime='" + playTime + '\'' +
+                ", nextUrl='" + nextUrl + '\'' +
+                ", play='" + play + '\'' +
+                ", type=" + type +
+                '}';
+    }
+
     private String nextUrl;
     private String play;
     private int type;

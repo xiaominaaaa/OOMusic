@@ -19,4 +19,11 @@
     <select id="mainData" resultMap="mainData">
         SELECT * FROM maindata
     </select>
+
+    <insert id="addMaindata" parameterType="cn.OOMusic.pojo.MainData">
+        INSERT INTO maindata (song_name,singer,play_time,play,type,next_url,image)
+    VALUES (#{songName},#{singer},#{playTime},#{play},#{type},
+    #{nextUrl},
+#{image});
+    </insert>
 </mapper>

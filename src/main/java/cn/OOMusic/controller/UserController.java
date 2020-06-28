@@ -37,4 +37,12 @@ public class UserController {
         return service.updataEmailPhone(user);
     }
 
+
+    @RequestMapping(value = "/user/login",method = RequestMethod.POST)
+    @ResponseBody
+    public User login(@RequestBody User user){
+        return service.login(user);
+    }
+
+
 }

@@ -35,4 +35,11 @@ public interface UserService {
      * @return
      */
     Massage updataEmailPhone(User user);
+
+    /**
+     *用户登录
+     * @param user
+     * @return
+     */
+    User login(User user);
 }

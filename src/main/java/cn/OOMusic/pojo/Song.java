@@ -1,7 +1,7 @@
 package cn.OOMusic.pojo;
 public class Song {
     private int id;
-    private int songId;
+    private String songId;
     private String songName;
     private int playTime;
     private String albumName;
@@ -17,15 +17,32 @@ public class Song {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Song{" +
+                "id=" + id +
+                ", songId='" + songId + '\'' +
+                ", songName='" + songName + '\'' +
+                ", playTime=" + playTime +
+                ", albumName='" + albumName + '\'' +
+                ", playNum=" + playNum +
+                ", likeNum=" + likeNum +
+                ", singer='" + singer + '\'' +
+                ", songUrl='" + songUrl + '\'' +
+                ", lyricsUrl='" + lyricsUrl + '\'' +
+                ", songImage='" + songImage + '\'' +
+                '}';
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getSongId() {
+    public String getSongId() {
         return songId;
     }
 
-    public void setSongId(int songId) {
+    public void setSongId(String songId) {
         this.songId = songId;
     }
 

@@ -47,5 +47,9 @@
          WHERE user_id=#{userId}
     </update>
 
+    <select id="login" parameterType="cn.OOMusic.pojo.User" resultMap="user">
+        SELECT * FROM oouser WHERE user_name =#{userName} and user_password = #{userPassword}
+    </select>
+
 
 </mapper>

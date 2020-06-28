@@ -78,4 +78,8 @@
         SELECT * FROM songlist where id = #{songId}
     </select>
 
+    <select id="isSide" parameterType="java.lang.String">
+        SELECT COUNT(*) FROM songlist WHERE song_id = #{songId}
+    </select>
+
 </mapper>
