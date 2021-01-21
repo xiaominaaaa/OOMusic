@@ -23,7 +23,7 @@
     <mysql-verson>5.1.46</mysql-verson>
     <mybatis-version>3.4.5</mybatis-version>
     <mybatis-spring>2.0.1</mybatis-spring>
-    <jackson-version>2.9.8</jackson-version>
+    <jackson-version>2.12.1</jackson-version>
     <c3p0-version>0.9.1.2</c3p0-version>
   </properties>
 
